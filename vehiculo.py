@@ -10,11 +10,15 @@ class Vehiculo:
         self._en_taller: bool = False
 
     # Método para registrar el ingreso del vehículo al taller
-    def ingresar(self) -> None:
+    def ingresar_al_taller(self) -> None:
         # Cambia el estado del atributo protegido a True indicando que está en el taller
         self._en_taller = True
 
     # Método para registrar la entrega y salida del vehículo del taller
-    def entregar(self) -> None:
+    def entregar_al_cliente(self) -> None:
         # Cambia el estado del atributo protegido a False indicando que ya no está en el taller
         self._en_taller = False
+
+    # Método para retornar la tarifa genérica por hora del vehículo
+    def tarifa_hora(self) -> int:
+        return 5000
