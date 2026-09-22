@@ -11,7 +11,14 @@ class Vehiculo: # Define la clase Vehiculo
     def modelo(self) -> Modelo:
         return self.__modelo
 
-    
+    @property
+    def anio(self)-> int:
+        return self.__anio
+
+    @property
+    def en_taller(self)-> bool:
+        return self.__en_taller
+
     @property
     def patente(self) -> str: # Getter que permite acceder a la patente como atributo (vehiculo.patente)
         return self.__patente # Retorna el valor del atributo privado __patente
