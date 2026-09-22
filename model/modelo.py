@@ -1,4 +1,4 @@
-from marca import Marca
+from model.marca import Marca
 
 class Modelo:
     def __init__(self, nombre: str, marca: Marca):

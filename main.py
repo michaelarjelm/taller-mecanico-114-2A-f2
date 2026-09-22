@@ -1,9 +1,40 @@
-from vehiculo import Vehiculo # Importa la clase base Vehiculo desde vehiculo.py
-from auto import Auto # Importa la clase Auto desde el archivo local auto.py
-from moto import Moto # Importa la clase Moto desde el archivo local moto.py
-from camion import Camion # Importa la clase Camion desde el archivo local camion.py
-from marca import Marca
-from modelo import Modelo
+from conectar import crear_conexion
+
+from dao.marca_dao import MarcaDAO
+from dao.modelo_dao import ModeloDAO
+from dao.vehiculo_dao import VehiculoDAO
+from dao.auto_dao import AutoDAO
+
+# -- CÓDIGO DE PRUEBA DE BASE DE DATOS Y DAOs --
+print("Iniciando prueba de base de datos...")
+conexion = crear_conexion()
+
+# Instanciar DAOs pasándoles la conexión
+marca_dao = MarcaDAO(conexion)
+modelo_dao = ModeloDAO(conexion)
+vehiculo_dao = VehiculoDAO(conexion)
+auto_dao = AutoDAO(conexion)
+
+# Crear las tablas
+marca_dao.crear_tabla()
+modelo_dao.crear_tabla()
+vehiculo_dao.crear_tabla()
+auto_dao.crear_tabla()
+
+# Confirmar cambios en la base de datos
+conexion.commit()
+print("¡Tablas creadas exitosamente en la base de datos taller.db!")
+
+# ====================================================================
+# CÓDIGO ANTERIOR COMENTADO PARA ANÁLISIS
+# ====================================================================
+"""
+from model.vehiculo import Vehiculo # Importa la clase base Vehiculo desde vehiculo.py
+from model.auto import Auto # Importa la clase Auto desde el archivo local auto.py
+from model.moto import Moto # Importa la clase Moto desde el archivo local moto.py
+from model.camion import Camion # Importa la clase Camion desde el archivo local camion.py
+from model.marca import Marca
+from model.modelo import Modelo
 
 # Instanciación de objetos de dependencias
 marca_toyota = Marca("Toyota")
@@ -43,3 +74,4 @@ print(f"Tarifa por hora Vehiculo Base: ${vehiculo_base.tarifa_hora()}") # Tarifa
 print(f"Tarifa por hora Auto: ${auto.tarifa_hora()}") # Tarifa sobreescrita Auto (25000)
 print(f"Tarifa por hora Moto: ${moto.tarifa_hora()}") # Tarifa sobreescrita Moto (15000)
 print(f"Tarifa por hora Camión: ${camion.tarifa_hora()}") # Tarifa sobreescrita Camion (40000)
+"""

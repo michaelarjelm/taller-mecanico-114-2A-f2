@@ -1,6 +1,6 @@
-from vehiculo import Vehiculo
-from usuario import Usuario
-from linea_detalle import LineaDetalle
+from model.vehiculo import Vehiculo
+from model.usuario import Usuario
+from model.linea_detalle import LineaDetalle
 
 class OrdenTrabajo:
     def __init__(self, numero: int, descripcion: str, vehiculo: Vehiculo, usuario: Usuario):

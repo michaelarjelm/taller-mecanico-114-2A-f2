@@ -1,5 +1,5 @@
-from vehiculo import Vehiculo # Importa la clase base Vehiculo desde vehiculo.py
-from modelo import Modelo
+from model.vehiculo import Vehiculo # Importa la clase base Vehiculo desde vehiculo.py
+from model.modelo import Modelo
 
 class Moto(Vehiculo): # Define la clase Moto heredando de Vehiculo
     def __init__(self, patente: str, anio: int, modelo: Modelo):

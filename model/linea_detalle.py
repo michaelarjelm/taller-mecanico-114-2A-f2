@@ -1,4 +1,4 @@
-from repuesto import Repuesto
+from model.repuesto import Repuesto
 
 class LineaDetalle:
     def __init__(self, cantidad: int, precio_unitario: int, repuesto: Repuesto):

@@ -1,4 +1,4 @@
-from modelo import Modelo
+from model.modelo import Modelo
 
 class Vehiculo: # Define la clase Vehiculo
     def __init__(self, patente: str, anio: int, modelo: Modelo): # Constructor que recibe patente, año y modelo
