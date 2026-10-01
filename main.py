@@ -123,17 +123,22 @@ def main():
                 continue
 
             es_importado = input("¿El repuesto es importado? (S/N): ").strip().upper() == 'S'
+            fecha_cotizacion = input("Ingrese la fecha (DD-MM-YYYY) o presione Enter para el valor de hoy: ").strip()
             
             # Instanciar el repuesto (asumimos un stock ficticio de 1 para este ejemplo)
             repuesto = Repuesto(codigo, nombre, 1, es_importado, precio)
             
-            print("Consultando el valor del dólar actual...")
+            print("Consultando el valor del dólar...")
             try:
                 servicio = MiIndicador()
-                dolar_hoy = servicio.valor_hoy("dolar")
-                print(f"Valor del dólar hoy: ${dolar_hoy}")
+                dolar = servicio.obtener_valor("dolar", fecha_cotizacion if fecha_cotizacion else None)
                 
-                precio_final = repuesto.precio_en_pesos(dolar_hoy)
+                if fecha_cotizacion:
+                    print(f"Valor del dólar el {fecha_cotizacion}: ${dolar}")
+                else:
+                    print(f"Valor del dólar hoy: ${dolar}")
+                
+                precio_final = repuesto.precio_en_pesos(dolar)
                 
                 print("\n--- RESUMEN COTIZACIÓN ---")
                 print(f"Repuesto: {repuesto.nombre} (Cod: {repuesto.codigo})")
